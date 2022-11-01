@@ -15,9 +15,7 @@ PHPMD := ./vendor/bin/phpmd
 PHPCS := ./vendor/bin/phpcs
 PHPSTAN := ./vendor/bin/phpstan
 PHPUNIT := ./vendor/bin/phpunit
-NODE := /usr/local/bin/node
 YARN := /usr/local/bin/yarn
-NPX := /usr/local/bin/npx
 
 build:
 	cd $(DOCKER_DIR) && $(DC_BUILD)
@@ -50,5 +48,5 @@ php-install:
 node-install:
 	cd $(DOCKER_DIR) && $(NODE_CONTAINER_EXEC) $(YARN) install
 
-node-watch:
-	cd $(DOCKER_DIR) && $(NODE_CONTAINER_EXEC) $(NPX) vue-cli-service serve --host=0.0.0.0 --port=9000
+serve:
+	cd $(DOCKER_DIR) && $(NODE_CONTAINER_EXEC) $(YARN) run dev
