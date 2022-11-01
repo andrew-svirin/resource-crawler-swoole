@@ -1,0 +1,17 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "vue-cli-service build --no-clean",
+    "watch": "vue-cli-service build --no-clean --watch"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "vue": "3.2.41"
+  },
+  "devDependencies": {
+    "@vue/cli-service": "5.0.8"
+  },
+  "engines": {
+    "node": "16.13.0"
+  }
+}

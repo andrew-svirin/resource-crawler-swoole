@@ -1,0 +1,7 @@
+### Node modules.
+/node_modules/
+
+### Yarn error log.
+yarn-error.log
+
+/public/
