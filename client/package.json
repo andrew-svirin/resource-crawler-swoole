@@ -11,9 +11,10 @@
   },
   "license": "MIT",
   "dependencies": {
-    "vue": "3.2.41",
     "@mdi/font": "5.9.55",
     "roboto-fontface": "0.10.0",
+    "vue": "3.2.41",
+    "vue3-charts": "1.1.31",
     "vuetify": "3.0.0",
     "webfontloader": "1.6.28"
   },
