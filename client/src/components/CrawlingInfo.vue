@@ -1,14 +1,11 @@
 <template>
-  <crawling-info />
+  <div>Crawling info</div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import CrawlingInfo from '@/components/CrawlingInfo';
 
 export default defineComponent({
-  components: {
-    CrawlingInfo
-  }
+  name: 'CrawlingInfo',
 });
 </script>
