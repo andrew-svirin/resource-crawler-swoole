@@ -1,6 +1,6 @@
 // Plugins
 import vue from '@vitejs/plugin-vue';
-import vuetify from 'vite-plugin-vuetify'
+import vuetify from 'vite-plugin-vuetify';
 
 // Utilities
 import { fileURLToPath, URL } from 'node:url';
@@ -39,5 +39,5 @@ export default defineConfig({
   build: {
     outDir: '../server/public/resources'
   },
-  define: { 'process.env': {} },
+  define: {'process.env': {}},
 });
