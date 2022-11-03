@@ -13,11 +13,6 @@ services:
     tty: true
     ports:
       - "80:9000"
-    expose:
-      - 9003
-    environment:
-      PHP_INI_SCAN_DIR: "/usr/local/etc/php/custom.d:/usr/local/etc/php/conf.d"
-      PHP_IDE_CONFIG: "serverName=localhost"
 
   node-resource-crawler-swoole:
     container_name: node-resource-crawler-swoole

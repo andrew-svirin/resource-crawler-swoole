@@ -10,7 +10,7 @@ if ($_ENV['SWOOLE_RUNTIME'] ?? false) {
     $_SERVER['APP_RUNTIME_OPTIONS'] = [
         'host'     => '0.0.0.0',
         'port'     => 9000,
-        'mode'     => SWOOLE_PROCESS,
+        'mode'     => SWOOLE_BASE,
         'settings' => [
             Constant::OPTION_WORKER_NUM            => 4,
             Constant::OPTION_ENABLE_STATIC_HANDLER => true,

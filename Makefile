@@ -10,6 +10,7 @@ PHP_CLI_CONTAINER_EXEC_SU := $(DC_EXEC) --user=root $(PHP_CLI_CONTAINER)
 NODE_CONTAINER := node-resource-crawler-swoole
 NODE_CONTAINER_EXEC := $(DC_EXEC) $(NODE_CONTAINER)
 BASH := /bin/bash
+PHP := /usr/bin/php
 COMPOSER := /usr/local/bin/composer
 PHPMD := ./vendor/bin/phpmd
 PHPCS := ./vendor/bin/phpcs
@@ -31,9 +32,11 @@ stop:
 
 restart: stop start
 
+php-ssh:
 ssh:
 	cd $(DOCKER_DIR) && $(PHP_CLI_CONTAINER_EXEC) $(BASH)
 
+php-ssh-su:
 ssh-su:
 	cd $(DOCKER_DIR) && $(PHP_CLI_CONTAINER_EXEC_SU) $(BASH)
 
@@ -48,5 +51,11 @@ php-install:
 node-install:
 	cd $(DOCKER_DIR) && $(NODE_CONTAINER_EXEC) $(YARN) install
 
-serve:
+node-serve:
 	cd $(DOCKER_DIR) && $(NODE_CONTAINER_EXEC) $(YARN) run dev
+
+php-dump-serve:
+	cd $(DOCKER_DIR) && $(PHP_CLI_CONTAINER_EXEC) $(PHP) bin/console server:dump
+
+php-serve:
+	cd $(DOCKER_DIR) && $(PHP_CLI_CONTAINER_EXEC) $(BASH) -c 'export SWOOLE_RUNTIME=1 && $(PHP) -d variables_order=EGPCS public/index.php'

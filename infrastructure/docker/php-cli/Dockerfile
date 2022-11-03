@@ -7,12 +7,9 @@ RUN apt-get update && apt-get install -y \
     unzip \
     libssh-dev \
     libzip-dev \
-    supervisor \
     sudo
 
-RUN pecl install xdebug
 RUN pecl install openswoole
-RUN docker-php-ext-enable xdebug
 RUN docker-php-ext-enable openswoole
 RUN docker-php-ext-install bcmath
 RUN docker-php-ext-install zip
@@ -37,22 +34,8 @@ RUN userdel -f ${USER_NAME} \
     && chown --changes --silent --no-dereference --recursive ${USER_ID}:${GROUP_ID}  \
       "/home/${USER_NAME}" /var/lib/php/sessions /var/log /var/www || true
 
-COPY ./docker-entrypoint.sh /docker-entrypoint.sh
-RUN chmod +x /docker-entrypoint.sh
-
-COPY ./supervisord.conf /etc/supervisord.conf
-COPY ./supervisor.d/app-swoole.conf /etc/supervisor/conf.d/app-swoole.conf
-RUN chmod 777 /run
-
 COPY ./php.ini /usr/local/etc/php/custom.d/php.ini
-COPY ./php.d/xdebug.ini /usr/local/etc/php/custom.d/xdebug.ini
-
-COPY .bashrc /root/.bashrc
-COPY .bashrc /home/${USER_NAME}/.bashrc
-RUN chown ${USER_NAME}:${GROUP_NAME} /home/${USER_NAME}/.bashrc
 
 USER ${USER_NAME}
 
 WORKDIR /var/www/resource-crawler-swoole/server
-
-ENTRYPOINT ["/docker-entrypoint.sh"]
