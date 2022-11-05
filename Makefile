@@ -17,6 +17,7 @@ PHPCS := ./vendor/bin/phpcs
 PHPSTAN := ./vendor/bin/phpstan
 PHPUNIT := ./vendor/bin/phpunit
 YARN := /usr/local/bin/yarn
+SYMFONY := /usr/local/bin/symfony
 
 build:
 	cd $(DOCKER_DIR) && $(DC_BUILD)
@@ -54,8 +55,42 @@ node-install:
 node-serve:
 	cd $(DOCKER_DIR) && $(NODE_CONTAINER_EXEC) $(YARN) run dev
 
-php-dump-serve:
+swoole-dump-serve:
 	cd $(DOCKER_DIR) && $(PHP_CLI_CONTAINER_EXEC) $(PHP) bin/console server:dump
 
+swoole-serve:
+	make php-en-swoole && make php-dis-xdebug && \
+	cd $(DOCKER_DIR) && $(PHP_CLI_CONTAINER_EXEC) $(PHP) -d variables_order=EGPCS bin/swoole-serve
+
 php-serve:
-	cd $(DOCKER_DIR) && $(PHP_CLI_CONTAINER_EXEC) $(BASH) -c 'export SWOOLE_RUNTIME=1 && $(PHP) -d variables_order=EGPCS public/index.php'
+	make php-dis-swoole && make php-en-xdebug && \
+	cd $(DOCKER_DIR) && $(PHP_CLI_CONTAINER_EXEC) $(SYMFONY) server:start --port=9000
+
+php-dis-xdebug:
+	cd $(DOCKER_DIR) && $(PHP_CLI_CONTAINER_EXEC_SU) $(BASH) -c " \
+	if [ -f /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini ] ; \
+	then \
+    	 mv /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    	/usr/local/etc/php/docker-php-ext-xdebug.ini ; \
+	fi;"
+
+php-en-xdebug:
+	cd $(DOCKER_DIR) && $(PHP_CLI_CONTAINER_EXEC_SU) $(BASH) -c " \
+	if [ -f /usr/local/etc/php/docker-php-ext-xdebug.ini ] ; \
+	then \
+    	mv /usr/local/etc/php/docker-php-ext-xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini ; \
+	fi;"
+
+php-dis-swoole:
+	cd $(DOCKER_DIR) && $(PHP_CLI_CONTAINER_EXEC_SU) $(BASH) -c " \
+	if [ -f /usr/local/etc/php/conf.d/docker-php-ext-openswoole.ini ] ; \
+	then \
+    	mv /usr/local/etc/php/conf.d/docker-php-ext-openswoole.ini /usr/local/etc/php/docker-php-ext-openswoole.ini ; \
+	fi;"
+
+php-en-swoole:
+	cd $(DOCKER_DIR) && $(PHP_CLI_CONTAINER_EXEC_SU) $(BASH) -c " \
+	if [ -f /usr/local/etc/php/docker-php-ext-openswoole.ini ] ; \
+	then \
+    	mv /usr/local/etc/php/docker-php-ext-openswoole.ini /usr/local/etc/php/conf.d/docker-php-ext-openswoole.ini ; \
+	fi;"

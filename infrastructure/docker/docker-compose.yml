@@ -13,6 +13,11 @@ services:
     tty: true
     ports:
       - "80:9000"
+    expose:
+      - 9003
+    environment:
+      PHP_IDE_CONFIG: "serverName=localhost"
+      XDEBUG_CONFIG: "client_host=host.docker.internal client_port=9003 mode=debug"
 
   node-resource-crawler-swoole:
     container_name: node-resource-crawler-swoole

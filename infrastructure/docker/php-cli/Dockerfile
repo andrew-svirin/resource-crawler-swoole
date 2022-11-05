@@ -10,13 +10,20 @@ RUN apt-get update && apt-get install -y \
     sudo
 
 RUN pecl install openswoole
+RUN pecl install xdebug
 RUN docker-php-ext-enable openswoole
+RUN docker-php-ext-enable xdebug
 RUN docker-php-ext-install bcmath
 RUN docker-php-ext-install zip
 
+#Install php
+RUN ln -sf /usr/local/bin/php /usr/bin/php
+
 #Install composer
-RUN ln -sf /usr/local/bin/php /usr/bin/php && \
-    curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --version=2.3.7 --filename=composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --version=2.3.7 --filename=composer
+
+#Install symfony
+RUN curl -sS https://get.symfony.com/cli/installer | bash -s -- --install-dir=/usr/local/bin
 
 ARG USER_ID
 ARG GROUP_ID
@@ -34,7 +41,8 @@ RUN userdel -f ${USER_NAME} \
     && chown --changes --silent --no-dereference --recursive ${USER_ID}:${GROUP_ID}  \
       "/home/${USER_NAME}" /var/lib/php/sessions /var/log /var/www || true
 
-COPY ./php.ini /usr/local/etc/php/custom.d/php.ini
+COPY commands/php-xdebug /usr/local/bin/php-xdebug
+RUN chmod +x /usr/local/bin/php-xdebug
 
 USER ${USER_NAME}
 
