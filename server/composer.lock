@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/andrew-svirin/resource-crawler-bundle.git",
-                "reference": "5a62907fb1159e38a3c008aaf310bbd67c7564a0"
+                "reference": "2e95e0029a1575b39e3e2e444db0ae1c84ebf54e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/andrew-svirin/resource-crawler-bundle/zipball/5a62907fb1159e38a3c008aaf310bbd67c7564a0",
-                "reference": "5a62907fb1159e38a3c008aaf310bbd67c7564a0",
+                "url": "https://api.github.com/repos/andrew-svirin/resource-crawler-bundle/zipball/2e95e0029a1575b39e3e2e444db0ae1c84ebf54e",
+                "reference": "2e95e0029a1575b39e3e2e444db0ae1c84ebf54e",
                 "shasum": ""
             },
             "require": {
@@ -54,19 +54,21 @@
             ],
             "description": "Crawler for any sort of resources.",
             "keywords": [
+                "Symfony Bundle",
                 "crawler",
                 "internet",
                 "internet bot",
                 "php",
                 "spider",
                 "spider bot",
-                "spiderbot"
+                "spiderbot",
+                "symfony"
             ],
             "support": {
                 "issues": "https://github.com/andrew-svirin/resource-crawler-bundle/issues",
                 "source": "https://github.com/andrew-svirin/resource-crawler-bundle/tree/main"
             },
-            "time": "2022-11-03T14:13:47+00:00"
+            "time": "2022-11-07T14:03:34+00:00"
         },
         {
             "name": "psr/cache",
