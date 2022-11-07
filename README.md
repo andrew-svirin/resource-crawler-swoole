@@ -17,3 +17,7 @@ can be organized for optimal development.
 3. `make swoole-serve` To run async server.
 4. `make php-serve` To run sync server.
 5. `make node-serve` To run server to compile js.
+
+# TODO:
+
+Add locking for store.
