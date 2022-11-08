@@ -1,22 +1,24 @@
 <template>
   <v-app>
-    <v-container>
-      <v-row>
-        <v-col>
-          <the-crawling-info />
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col>
-          <the-crawling-statistic />
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col>
-          <the-crawling-chart />
-        </v-col>
-      </v-row>
-    </v-container>
+    <v-main>
+      <v-container fluid>
+        <v-row>
+          <v-col>
+            <the-crawling-info />
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col>
+            <the-crawling-statistic />
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col>
+            <the-crawling-chart />
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-main>
   </v-app>
 </template>
 
