@@ -1,0 +1,5 @@
+resource_crawler:
+  process:
+    is_lockable: true
+    file_store:
+      dir: "%kernel.project_dir%/var/storage/saver"

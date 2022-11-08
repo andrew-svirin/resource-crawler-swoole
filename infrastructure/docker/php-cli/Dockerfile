@@ -41,6 +41,8 @@ RUN userdel -f ${USER_NAME} \
     && chown --changes --silent --no-dereference --recursive ${USER_ID}:${GROUP_ID}  \
       "/home/${USER_NAME}" /var/lib/php/sessions /var/log /var/www || true
 
+COPY ./conf.d/xdebug.ini /usr/local/etc/php/custom.d/xdebug.ini
+
 COPY commands/php-xdebug /usr/local/bin/php-xdebug
 RUN chmod +x /usr/local/bin/php-xdebug
 

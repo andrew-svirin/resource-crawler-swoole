@@ -18,7 +18,8 @@ class CrawlingController extends AbstractController
 
         $task = $resourceCrawler->crawlWebResource($url, $pathMasks);
 
-        dump($task);
+//        dump($task);
+        // TODO: Is in for_processing. but should be in_process
 
         $response = new CrawlingCrawlResponse($task);
 
