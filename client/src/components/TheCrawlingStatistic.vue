@@ -4,53 +4,52 @@
     <thead>
     <tr>
       <th>
-        {{ tableHeaderLabels.status }}
+        {{ tableHeaderLabels.label }}
       </th>
       <th>
-        {{ tableHeaderLabels.amount }}
+        {{ tableHeaderLabels.value }}
       </th>
     </tr>
     </thead>
     <tbody>
     <tr>
-      <td>{{ tableRowLabels.in_process }}</td>
-      <td>{{ props.in_process }}</td>
+      <td>{{ tableRowLabels.total_requests }}</td>
+      <td>{{ statistic.total_requests }}</td>
     </tr>
     <tr>
-      <td>{{ tableRowLabels.processed }}</td>
-      <td>{{ props.processed }}</td>
+      <td>{{ tableRowLabels.processed_requests }}</td>
+      <td>{{ statistic.processed_requests }}</td>
     </tr>
     <tr>
-      <td>{{ tableRowLabels.errored }}</td>
-      <td>{{ props.errored }}</td>
-    </tr>
-    <tr>
-      <td>{{ tableRowLabels.ignored }}</td>
-      <td>{{ props.ignored }}</td>
+      <td>{{ tableRowLabels.spent_time }}</td>
+      <td>{{ spentTime(statistic.start_time, statistic.end_time) }}</td>
     </tr>
     </tbody>
   </v-table>
 </template>
 
 <script setup lang="ts">
+import type { PropType } from 'vue';
+
 const componentTitle: string = 'Crawling Statistic';
 
 const tableHeaderLabels: object = {
-  status: 'Status',
-  amount: 'Amount',
+  label: 'Label',
+  value: 'Value',
 };
 
 const tableRowLabels: object = {
-  in_process: 'In Process',
-  processed: 'Processed',
-  errored: 'Errored',
-  ignored: 'Ignored',
+  iteration: 'Iteration',
+  total_requests: 'Total requests',
+  processed_requests: 'Processed requests',
+  spent_time: 'Spent time (sec)',
 };
 
-const props = defineProps({
-  in_process: {type: Number, default: 0},
-  processed: {type: Number, default: 0},
-  errored: {type: Number, default: 0},
-  ignored: {type: Number, default: 0},
+defineProps({
+  statistic: {type: Object as PropType<CrawlingStatistic>, required: true},
 });
+
+const spentTime = (startTime: number, endTime: number): number => {
+  return Math.round(endTime - startTime);
+};
 </script>

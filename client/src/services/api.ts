@@ -5,6 +5,10 @@ export class Api {
     return this.request('/crawling/crawl', 'GET');
   }
 
+  public reset (): Promise<Response> {
+    return this.request('/crawling/reset', 'GET');
+  }
+
   private request (path: string, method: string): Promise<Response> {
     return fetch(this.basePath + path, {
       method: method,

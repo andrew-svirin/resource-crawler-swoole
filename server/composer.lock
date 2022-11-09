@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/andrew-svirin/resource-crawler-bundle.git",
-                "reference": "e89416bf1db0fca9ba3269130914541c543303fa"
+                "reference": "12c5f7b60d5741abfa2d8f50f38ec46467976dd2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/andrew-svirin/resource-crawler-bundle/zipball/e89416bf1db0fca9ba3269130914541c543303fa",
-                "reference": "e89416bf1db0fca9ba3269130914541c543303fa",
+                "url": "https://api.github.com/repos/andrew-svirin/resource-crawler-bundle/zipball/12c5f7b60d5741abfa2d8f50f38ec46467976dd2",
+                "reference": "12c5f7b60d5741abfa2d8f50f38ec46467976dd2",
                 "shasum": ""
             },
             "require": {
@@ -68,7 +68,7 @@
                 "issues": "https://github.com/andrew-svirin/resource-crawler-bundle/issues",
                 "source": "https://github.com/andrew-svirin/resource-crawler-bundle/tree/main"
             },
-            "time": "2022-11-08T14:20:31+00:00"
+            "time": "2022-11-09T20:53:21+00:00"
         },
         {
             "name": "nelmio/cors-bundle",
