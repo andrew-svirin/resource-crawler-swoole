@@ -8,6 +8,7 @@
     "ext-ctype": "*",
     "ext-iconv": "*",
     "andrew-svirin/resource-crawler-bundle": "dev-main",
+    "nelmio/cors-bundle": "^2.2",
     "runtime/swoole": "^0.3.1",
     "symfony/console": "6.1.*",
     "symfony/dotenv": "6.1.*",
