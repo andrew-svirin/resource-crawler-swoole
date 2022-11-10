@@ -15,8 +15,10 @@ can be organized for optimal development.
 - PHP 8.1
 - Swoole (openswoole)
 - Symfony
-- Type script
+- TypeScript
 - Vue 3
+- Docker
+- Makefile
 
 ## Usage
 
