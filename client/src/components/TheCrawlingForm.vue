@@ -4,7 +4,7 @@
       <v-row>
 
         <v-col
-          md="4"
+          md="3"
         >
           <v-select
             v-model="form.resource_type"
@@ -15,7 +15,7 @@
         </v-col>
 
         <v-col
-          md="4"
+          md="3"
         >
           <v-text-field
             v-model="form.resource_path"
@@ -25,11 +25,21 @@
         </v-col>
 
         <v-col
-          md="4"
+          md="3"
         >
           <v-text-field
             v-model="form.parallel_connections_amount"
             :label="labels.parallelConnectionsAmount"
+            required
+          ></v-text-field>
+        </v-col>
+
+        <v-col
+          md="3"
+        >
+          <v-text-field
+            v-model="form.requests_amount"
+            :label="labels.requestsAmount"
             required
           ></v-text-field>
         </v-col>
@@ -46,12 +56,14 @@ const labels: object = {
   resourceType: 'Type',
   resourcePath: 'Path',
   parallelConnectionsAmount: 'Parallel connections amount',
+  requestsAmount: 'Requests amount',
 };
 
 let form: CrawlingForm = reactive({
   parallel_connections_amount: 4,
+  requests_amount: 20,
   resource_path: 'https://data.fivethirtyeight.com/',
-  resource_type: 'disk'
+  resource_type: 'web'
 });
 
 const resourceTypeItems = [

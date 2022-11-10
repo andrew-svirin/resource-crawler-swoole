@@ -34,7 +34,7 @@ const onClickStart = async () => {
     end_time: getCurrentTime(),
   };
 
-  for (let i = 0; i < 8; i++) {
+  for (let i = 0; i < crawlingForm.parallel_connections_amount; i++) {
     iterateRequest(api, (data: CrawlResponse): void => {
       statistic.total_requests++;
 
@@ -44,17 +44,15 @@ const onClickStart = async () => {
         statistic.iteration++;
       }
 
-      if (statistic.iteration <= 100) {
+      if (statistic.iteration <= crawlingForm.requests_amount) {
         statistic.end_time = getCurrentTime();
 
         emit('statisticChanged', statistic);
       }
     }, () => {
-      return statistic.iteration >= 100;
+      return statistic.iteration >= crawlingForm.requests_amount;
     });
   }
-
-  console.log('click', crawlingForm);
 };
 
 const getCurrentTime = (): number => {
@@ -62,7 +60,10 @@ const getCurrentTime = (): number => {
 };
 
 const iterateRequest = (api: Api, dataHandler: (data: object) => void, exitSignalHandler: () => boolean): void => {
-  api.crawl().then((data: object) => {
+  api.crawl({
+    resource_type: crawlingForm.resource_type,
+    resource_path: crawlingForm.resource_path,
+  }).then((data: object) => {
     dataHandler(data);
 
     if (!exitSignalHandler()) {
@@ -72,7 +73,10 @@ const iterateRequest = (api: Api, dataHandler: (data: object) => void, exitSigna
 };
 
 const onClickClear = (): void => {
-  api.reset();
+  api.reset({
+    resource_type: crawlingForm.resource_type,
+    resource_path: crawlingForm.resource_path,
+  });
 };
 
 const emit = defineEmits(['statisticChanged']);

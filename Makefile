@@ -63,6 +63,10 @@ swoole-serve:
 	cd $(DOCKER_DIR) && $(PHP_CLI_CONTAINER_EXEC) $(PHP) -d variables_order=EGPCS bin/swoole-serve
 
 php-serve:
+	make php-dis-swoole && make php-dis-xdebug && \
+	cd $(DOCKER_DIR) && $(PHP_CLI_CONTAINER_EXEC) $(SYMFONY) server:start --port=9000
+
+php-serve-debug:
 	make php-dis-swoole && make php-en-xdebug && \
 	cd $(DOCKER_DIR) && $(PHP_CLI_CONTAINER_EXEC) $(SYMFONY) server:start --port=9000
 

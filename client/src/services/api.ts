@@ -1,17 +1,21 @@
 export class Api {
   readonly basePath: string = 'http://localhost:80';
 
-  public crawl (): Promise<Response> {
-    return this.request('/crawling/crawl', 'GET');
+  public crawl (request: CrawlRequest): Promise<Response> {
+    return this.request('/crawling/crawl', 'POST', request);
   }
 
-  public reset (): Promise<Response> {
-    return this.request('/crawling/reset', 'GET');
+  public reset (request: ResetRequest): Promise<Response> {
+    return this.request('/crawling/reset', 'POST', request);
   }
 
-  private request (path: string, method: string): Promise<Response> {
+  private request (path: string, method: string, data?: object): Promise<Response> {
     return fetch(this.basePath + path, {
       method: method,
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json'
+      },
     })
       .then((response) => {
         if (response.status != 200) {
