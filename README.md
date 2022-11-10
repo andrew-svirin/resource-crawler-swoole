@@ -16,10 +16,10 @@ In result Swoole-server is **4x** productively than PHP-server
 with 4 CPU cores.  
 
 PHP server  
-<img src="https://github.com/andrew-svirin/resource-crawler-swoole/blob/main/docs/experiment_results/php-experiment.jpg" width="600">
+<img src="https://github.com/andrew-svirin/resource-crawler-swoole/blob/main/docs/experiment_results/php-experiment.jpg" width="800">
 
 Swoole server  
-<img src="https://github.com/andrew-svirin/resource-crawler-swoole/blob/main/docs/experiment_results/swoole-experiment.jpg" width="300">
+<img src="https://github.com/andrew-svirin/resource-crawler-swoole/blob/main/docs/experiment_results/swoole-experiment.jpg" width="800">
 
 ## Technologies
 
