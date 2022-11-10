@@ -62,7 +62,7 @@ const labels: object = {
 let form: CrawlingForm = reactive({
   parallel_connections_amount: 4,
   requests_amount: 20,
-  resource_path: 'https://data.fivethirtyeight.com/',
+  resource_path: 'https://github.com/',
   resource_type: 'web'
 });
 

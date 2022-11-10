@@ -17,7 +17,7 @@ class CrawlingController extends AbstractController
     {
         $requestData = $request->toArray();
 
-        $pathMasks = ['+fivethirtyeight.com/', '-embed'];
+        $pathMasks = ['+github.com/', '-embed'];
 
         if ($requestData['resource_type'] === 'web') {
             $task = $resourceCrawler->crawlWebResource($requestData['resource_path'], $pathMasks);
