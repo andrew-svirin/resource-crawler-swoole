@@ -14,7 +14,7 @@ can be organized for optimal development.
 
 - PHP 8.1
 - Swoole (openswoole)
-- Symfony
+- Symfony 6
 - TypeScript
 - Vue 3
 - Docker
